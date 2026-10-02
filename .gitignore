@@ -1,0 +1,8 @@
+hashes/ANSWER_KEY.csv
+hashes/*.pot
+results/*.potfile
+wordlists/rockyou.txt
+wordlists/*.txt
+*.restore
+.hashcat/
+__pycache__/
