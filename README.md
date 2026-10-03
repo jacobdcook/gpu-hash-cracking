@@ -29,9 +29,9 @@ defender's side.
 ```
 scripts/gen_hashes.py   generate the synthetic hash set (pure-Python NTLM/MD4)
 scripts/crack.sh        run the dictionary -> rules -> mask progression
-hashes/                 generated hashes (answer key is gitignored)
+hashes/                 generated synthetic hashes (plaintext ANSWER_KEY.csv stays local/gitignored)
 wordlists/              rockyou (gitignored, fetch script below)
-results/                potfile + cracked output + RESULTS.md
+results/                cracked output + RESULTS.md (synthetic creds only; see note below)
 docs/                   methodology and defense notes
 ```
 
@@ -90,6 +90,15 @@ See [docs/defense.md](docs/defense.md). Short version:
   DCSync (replication from a non-DC), LSASS access, Volume Shadow Copy abuse,
   and Kerberoast (bulk TGS-REP requests, especially RC4). Those map to the
   detections in the AD lab repo.
+
+## Data note
+
+Everything committed here is synthetic. The generated hash files
+(`hashes/*.txt`) and the cracked outputs (`results/cracked_*.txt`) come from a
+fake corporate user list produced by `scripts/gen_hashes.py`; no real
+credentials are involved. The plaintext mapping (`hashes/ANSWER_KEY.csv`) is
+gitignored and never committed, so the repo shows the workflow without shipping
+a ready-made plaintext key.
 
 ## Ethics
 
